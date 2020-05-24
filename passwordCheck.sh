@@ -1,22 +1,31 @@
+# ===================================== #
+# This script validates password input  #
+# ===================================== #
 #!/bin/bash
 #set -x
 
-#enter password
-read -sp "password:" password
+#user enters password
+read -sp "Enter password:" password
+#echo $password
 
-# while loop checks only one line
+#storage path of passwords 
 file="./secret.txt"
-while IFS= read -r line ; do
-#   echo "Testing $line: "
-    pass="$(printf "$line")"
-    if [[ "$pass" = "$password" ]] ; then
+
+#checks each line, compares given password and grants access if valid
+while IFS= read -r line; do
+     if [[ "$password" == "$line" ]]; then
+        pass="Access Granted"
         echo $'\n'
-        echo "Access Granted."
-        exit 0
-    else
-        echo $'\n'
-        echo "Access Denied."
-        echo "Goodbye."
-        exit 1
+        echo $pass
     fi
 done <"$file"
+
+#denies access if password does not exists
+if [ "$pass" == "Access Granted" ]; then
+    exit 0
+else
+    pass="Access Denied"
+    echo $'\n'
+    echo $pass
+    exit 1
+fi
