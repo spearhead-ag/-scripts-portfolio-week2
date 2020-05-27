@@ -1,3 +1,6 @@
+# ================================== #
+# This script runs a case statement  #
+# ================================== #
 #!/bin/bash
 #set -x
 file="./result"
