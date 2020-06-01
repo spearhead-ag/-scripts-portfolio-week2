@@ -6,14 +6,14 @@
 
 #user enters password
 read -sp "Enter password:" password
-#echo $password
 
-#storage path of passwords 
+#password directory path and storage filename
 file="./secret.txt"
 
-#checks each line, compares given password and grants access if valid
+#checks and compares password input against password lists 
 while IFS= read -r line; do
-     if [[ "$password" == "$line" ]]; then
+    #grants access if password input is valid
+    if [[ "$password" == "$line" ]]; then
         pass="Access Granted"
         echo $'\n'
         echo $pass
@@ -29,3 +29,5 @@ else
     echo $pass
     exit 1
 fi
+
+exit 0
