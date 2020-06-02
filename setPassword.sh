@@ -11,7 +11,7 @@ mkdir $folderName && touch $folderName/secret.txt
 read -sp "enter password: " password
 
 #password saved to 'secret.txt' under foldername given
-echo "$password" >> $folderName/secret.txt
+echo -n "$password" | sha256sum >> $folderName/secret.txt
 
 echo -e "\nPassword saved."
 
