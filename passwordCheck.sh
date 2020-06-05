@@ -23,14 +23,14 @@ done <"$file"
 
 #denies access if password does not exists
 if [ "$pass" == "Access Granted" ]; then
+    read -t 10 -p "Let's pause for 10 seconds ..."
     exit 0
 else
     pass="Access Denied"
     echo $'\n'
     echo $pass
+    read -t 10 -p "Let's pause for 10 seconds ..."
     exit 1
 fi
-
-read -t 10 -p "Let's pause for 10 seconds ..."
 
 exit 0
