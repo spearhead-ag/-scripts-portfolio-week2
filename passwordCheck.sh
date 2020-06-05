@@ -31,4 +31,6 @@ else
     exit 1
 fi
 
+read -t 10 -p "Let's pause for 10 seconds ..."
+
 exit 0
