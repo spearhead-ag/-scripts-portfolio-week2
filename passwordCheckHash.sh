@@ -2,14 +2,16 @@
 # This script validates password input  #
 # ===================================== #
 #!/bin/bash
-#set -x
+set -x
 
-#enters password and stores at var "hash"
+#enters password
 read -sp "Enter password:" password
+#echo -n "$password" | sha256sum
 hash=$(echo -n "$password" | sha256sum)
+echo $hash
 
 #password directory path and storage filename
-file="./secret.txt"
+file="./secretHash.txt"
  
 #checks and compares password input against password lists 
 while IFS= read -r line; do
@@ -30,7 +32,5 @@ else
     echo $pass
     exit 1
 fi
-
-read -t 5 -p " "
 
 exit 0
